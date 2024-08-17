@@ -109,29 +109,23 @@
     </div>
 
     <script>
-    function checkCompatibility() {
-        const name1 = document.getElementById('name1').value.toLowerCase();
-        const name2 = document.getElementById('name2').value.toLowerCase();
-        const heartFill = document.getElementById('heartFill');
-        let compatibility;
-        
-        if (name1 && name2) {
-            // Cek apakah pasangan nama cocok dengan 'rasyad' dan 'rifvika' (atau kebalikannya)
-            if ((name1 === 'cowo' && name2 === 'rifvika') || (name1 === 'rifvika' && name2 === 'cowo')) {
-                compatibility = 100; // Jika ya, langsung set kompatibilitas menjadi 100%
-            } else {
-                compatibility = Math.floor(Math.random() * 100) + 1; // Jika tidak, hasilkan persentase secara acak
-            }
+        function checkCompatibility() {
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+            const heartFill = document.getElementById('heartFill');
             
-            const fillPercentage = 100 - compatibility;
-            heartFill.style.top = fillPercentage + '%'; // Adjust the fill height
-            document.getElementById('result').innerText = `${name1} and ${name2} are ${compatibility}% compatible!`;
-        } else {
-            document.getElementById('result').innerText = 'Please enter both names.';
-            heartFill.style.top = '100%'; // Reset the heart fill
+            if (name1 && name2) {
+                const compatibility = Math.floor(Math.random() * 100) + 1; // Random percentage between 1 and 100
+                const fillPercentage = 100 - compatibility;
+                
+                heartFill.style.top = fillPercentage + '%'; // Adjust the fill height
+                document.getElementById('result').innerText = `${name1} and ${name2} are ${compatibility}% compatible!`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter both names.';
+                heartFill.style.top = '100%'; // Reset the heart fill
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
